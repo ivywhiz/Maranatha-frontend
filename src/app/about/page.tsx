@@ -1,5 +1,14 @@
 // app/about/page.tsx
 import { Metadata } from "next";
+import Header from "../../components/header";
+import AboutHeroSection from "../../components/about/hero-about";
+//import WhoWeAreSection from "../../components/about/about";
+import WhatWeDoSection from "../../components/about/do";
+import OurTeachingSection from "../../components/about/teachings";
+import SpiritualGrowthSection from "../../components/about/spiritual-growth";
+import OutreachMinistriesSection from "../../components/about/outreach";
+import KeepLightSection from "../../components/keep-light-section";
+import Footer from "../../components/footer";
 
 export const metadata: Metadata = {
   title: "About Us | Maranatha Moment Ministries - Evangelizing, Saving Souls, Preaching Jesus Christ",
@@ -25,7 +34,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      {/* Structured Data - Organization */}
+      {/* Structured Data — Organization */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -57,8 +66,17 @@ export default function AboutPage() {
         }}
       />
 
-      <div className="min-h-screen bg-background">
-      </div>
+      <main className="min-h-screen bg-background">
+        <Header />
+        <AboutHeroSection />
+        {/*<WhoWeAreSection /> */}
+        <WhatWeDoSection />
+        <OurTeachingSection />
+        <SpiritualGrowthSection />
+        <OutreachMinistriesSection />
+        <KeepLightSection />
+        <Footer />
+      </main>
     </>
   );
 }

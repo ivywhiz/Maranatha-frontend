@@ -4,139 +4,194 @@
 import Image from "next/image"
 import { Heart, Wheat, Gift } from "lucide-react"
 
+const cards = [
+  {
+    image: "/images/hands-giving-helping.jpg",
+    alt: "Giving",
+    label: "Giving",
+    icon: Heart,
+    iconClass: "text-rose-500 fill-rose-500",
+    rotate: "-rotate-[4deg]",
+    hoverRotate: "hover:-rotate-[20deg]",
+    bg: "bg-white",
+    labelClass: "text-gray-800",
+    z: "z-10",
+    mt: "",
+  },
+  {
+    image: "/images/community-sharing-together.jpg",
+    alt: "Sharing the Word",
+    label: "Sharing the Word",
+    icon: Wheat,
+    iconClass: "text-yellow-300",
+    rotate: "rotate-[4deg]",
+    hoverRotate: "hover:rotate-[20deg]",
+    bg: "bg-gradient-to-br from-purple-600 to-fuchsia-500",
+    labelClass: "text-white",
+    z: "z-20",
+    mt: "-mt-10 md:-mt-16 scale-[1.06]",
+  },
+  {
+    image: "/images/hands-giving-donation.jpg",
+    alt: "Donation",
+    label: "Donation",
+    icon: Gift,
+    iconClass: "text-emerald-500 fill-emerald-500",
+    rotate: "rotate-[3deg]",
+    hoverRotate: "hover:rotate-[20deg]",
+    bg: "bg-white",
+    labelClass: "text-gray-800",
+    z: "z-10",
+    mt: "",
+  },
+]
+
 export default function ServicesSection() {
   return (
     <section
+      className="relative overflow-hidden text-white"
       style={{ backgroundColor: "#800080" }}
-      className="py-16 lg:py-24 relative overflow-hidden"
     >
-      {/* Decorative Top Border with Geometric Pattern */}
-      <div className="absolute top-0 left-0 right-0 h-24 overflow-hidden">
-        {/* Dotted Pattern */}
-        <div className="absolute inset-0 opacity-20">
-          <svg width="100%" height="100%">
-            <defs>
-              <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                <circle cx="20" cy="20" r="2" fill="white" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#dots)" />
-          </svg>
-        </div>
-        
-        {/* Decorative Circles */}
-        <div className="absolute -top-12 left-10 w-32 h-32 rounded-full bg-white opacity-10"></div>
-        <div className="absolute -top-8 right-20 w-24 h-24 rounded-full bg-purple-300 opacity-20"></div>
-        <div className="absolute top-8 left-1/3 w-16 h-16 rounded-full bg-pink-400 opacity-15"></div>
-        <div className="absolute -top-4 right-1/3 w-20 h-20 rounded-full bg-yellow-300 opacity-10"></div>
-        
-        {/* Gradient Overlay Line */}
-        <div 
-          className="absolute top-0 left-0 right-0 h-1"
-          style={{
-            background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.3) 80%, transparent 100%)"
-          }}
-        ></div>
+      {/* ── Top accent gradient line (matches footer) ── */}
+      <div
+        className="h-1 w-full"
+        style={{
+          background:
+            "linear-gradient(to right, transparent, #c084fc, #f59e0b, #c084fc, transparent)",
+        }}
+      />
+
+      {/* ── Ambient background glows ── */}
+      <div
+        className="absolute -top-40 -left-40 w-[560px] h-[560px] rounded-full pointer-events-none opacity-20"
+        style={{ background: "radial-gradient(circle, #41076A 0%, transparent 70%)" }}
+        aria-hidden
+      />
+      <div
+        className="absolute -bottom-32 -right-32 w-[480px] h-[480px] rounded-full pointer-events-none opacity-25"
+        style={{ background: "radial-gradient(circle, #c026d3 0%, transparent 70%)" }}
+        aria-hidden
+      />
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none opacity-10"
+        style={{ background: "radial-gradient(circle, #f59e0b 0%, transparent 65%)" }}
+        aria-hidden
+      />
+
+      {/* ── Dot-grid texture ── */}
+      <div className="absolute inset-0 opacity-[0.07] pointer-events-none" aria-hidden>
+        <svg width="100%" height="100%">
+          <defs>
+            <pattern id="dot-grid" x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1.5" fill="white" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#dot-grid)" />
+        </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* About Us Pill */}
-        <div className="mb-8">
-          <span className="inline-block bg-white/20 text-white px-6 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
-            About Us
-          </span>
-        </div>
+      {/* ══ CONTENT ══ */}
+      <div className="relative z-10 max-w-[96rem] mx-auto px-6 sm:px-10 lg:px-16 py-20 lg:py-28">
 
-        {/* Title + CTA */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
-          <div className="space-y-6 text-white">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              A Home for Every Believer
+        {/* ── Header row ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-end mb-20 lg:mb-28">
+
+          {/* Left — label + heading */}
+          <div className="space-y-6">
+            <span className="inline-flex items-center px-5 py-1.5 rounded-full text-sm font-medium bg-white/15 text-white backdrop-blur-sm ring-1 ring-white/20">
+              About Us
+            </span>
+
+            <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold leading-[1.08] tracking-tight">
+              A Home for Every <br className="hidden sm:block" />
+              <span
+                className="relative inline-block"
+                style={{
+                  background: "linear-gradient(90deg, #fde68a, #f59e0b)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Believer
+              </span>
             </h2>
-            <p className="text-lg text-white/90 leading-relaxed max-w-xl">
-              Maranatha is more than an app — it's a community centered on the Word. We bring together teachings,
-              sermons, and real-life testimonies that inspire hope and nurture spiritual growth.
-            </p>
+
+            {/* Accent divider */}
+            <div className="flex items-center gap-3 pt-1">
+              <div className="h-0.5 w-10 rounded-full bg-amber-400" />
+              <div className="h-0.5 w-4 rounded-full bg-white/30" />
+            </div>
           </div>
 
-          <div className="flex justify-start lg:justify-end items-center">
+          {/* Right — body + CTA */}
+          <div className="space-y-8">
+            <p className="text-lg text-white/75 leading-relaxed">
+              Maranatha is more than an app — it's a community centered on the Word.
+              We bring together teachings, sermons, and real-life testimonies that
+              inspire hope and nurture spiritual growth.
+            </p>
+
             <button
+              className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-base font-semibold text-gray-900 shadow-lg transition-all duration-200 hover:shadow-xl hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-purple-800"
               style={{ backgroundColor: "#E99E2E" }}
-              className="text-white px-8 py-3 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg"
             >
               Join the Community
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              </svg>
             </button>
           </div>
         </div>
 
-        {/* Overlapping Cards - All with Icons & ±25° Rotation */}
-        <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-16 items-start justify-center">
-            {/* Card 1: Giving */}
-            <div className="group z-10">
+        {/* ── Cards ── */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-6 lg:gap-10">
+          {cards.map(({ image, alt, label, icon: Icon, iconClass, rotate, hoverRotate, bg, labelClass, z, mt }) => (
+            <div
+              key={label}
+              className={`group ${z} ${mt} w-72 flex-shrink-0 cursor-pointer`}
+            >
               <div
-                className="w-72 mx-auto bg-white rounded-3xl shadow-2xl p-6 transform transition-all duration-500 ease-out
-                rotate-[-3deg] hover:rotate-[-25deg] hover:-translate-y-3 hover:shadow-3xl"
+                className={`
+                  ${bg} ${rotate} ${hoverRotate}
+                  rounded-3xl shadow-2xl p-5
+                  transform transition-all duration-500 ease-out
+                  hover:-translate-y-4
+                  ring-1 ring-white/10
+                `}
               >
-                <div className="h-96 relative rounded-2xl overflow-hidden mb-6">
+                {/* Image */}
+                <div className="relative h-80 w-full rounded-2xl overflow-hidden mb-5 shadow-inner">
                   <Image
-                    src="/images/hands-giving-helping.jpg"
-                    alt="Giving"
+                    src={image}
+                    alt={alt}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="288px"
                   />
+                  {/* Subtle image overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
-                <div className="flex items-center justify-center gap-3">
-                  <Heart size={28} className="text-red-500 fill-red-500" />
-                  <p className="text-xl font-bold text-gray-800">Giving</p>
-                </div>
-              </div>
-            </div>
 
-            {/* Card 2: Sharing the Word (OVERLAPS BOTH) */}
-            <div className="group z-20 -mt-16 md:-mt-20">
-              <div
-                className="w-72 mx-auto bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl shadow-2xl p-6 transform transition-all duration-500 ease-out
-                rotate-[3deg] hover:rotate-[25deg] hover:-translate-y-4 hover:shadow-3xl scale-105"
-              >
-                <div className="h-96 relative rounded-2xl overflow-hidden mb-6">
-                  <Image
-                    src="/images/community-sharing-together.jpg"
-                    alt="Sharing the word"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="flex items-center justify-center gap-3">
-                  <Wheat size={28} className="text-yellow-300" />
-                  <p className="text-xl font-bold text-white">Sharing the word</p>
+                {/* Label */}
+                <div className="flex items-center justify-center gap-2.5 py-1">
+                  <Icon size={22} className={iconClass} />
+                  <p className={`text-lg font-bold ${labelClass}`}>{label}</p>
                 </div>
               </div>
             </div>
-
-            {/* Card 3: Donation */}
-            <div className="group z-10">
-              <div
-                className="w-72 mx-auto bg-white rounded-3xl shadow-2xl p-6 transform transition-all duration-500 ease-out
-                rotate-[-2deg] hover:rotate-[25deg] hover:-translate-y-3 hover:shadow-3xl"
-              >
-                <div className="h-96 relative rounded-2xl overflow-hidden mb-6">
-                  <Image
-                    src="/images/hands-giving-donation.jpg"
-                    alt="Donation"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="flex items-center justify-center gap-3">
-                  <Gift size={28} className="text-green-600 fill-green-600" />
-                  <p className="text-xl font-bold text-gray-800">Donation</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
+
       </div>
+
+      {/* ── Bottom accent gradient line ── */}
+      <div
+        className="h-px w-full"
+        style={{
+          background:
+            "linear-gradient(to right, transparent, #c084fc, #f59e0b, #c084fc, transparent)",
+        }}
+      />
     </section>
   )
 }

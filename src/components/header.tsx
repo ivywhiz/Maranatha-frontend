@@ -9,12 +9,12 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navItems = [
-    { label: "Home", href: "#" },
-    { label: "About Us", href: "#" },
-    { label: "Sermons", href: "#" },
-    { label: "Events", href: "#" },
-    { label: "Prayer Wall", href: "#" },
-    { label: "Resources", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "Sermons", href: "sermons" },
+    { label: "Events", href: "events" },
+    { label: "Resources", href: "/resources" },
+    { label: "Contact", href: "/contact" },
   ]
 
   return (

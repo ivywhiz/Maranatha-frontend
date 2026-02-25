@@ -12,7 +12,7 @@ export default function CTASection() {
       {/* Optional: Dark overlay for better text readability */}
       <div className="absolute inset-0 bg-black/40" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <div className="relative max-w-[96rem] mx-auto px-6 sm:px-10 lg:px-16 z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="space-y-4 flex-1">
             <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight">

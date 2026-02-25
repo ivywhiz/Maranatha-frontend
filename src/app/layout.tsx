@@ -1,6 +1,8 @@
 // src/app/layout.tsx
-import "./globals.css";
 import type { Metadata, Viewport } from "next";
+import "./globals.css";
+import { Toaster } from "../components/ui/sonner";
+import ScripturePopup from "../components/scripture-popup";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -82,7 +84,7 @@ export const metadata: Metadata = {
   },
 };
 
-// JSON-LD
+// Structured Data (JSON-LD) for better SEO
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -112,6 +114,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* Preload important fonts */}
         <link
           rel="preload"
           href="/fonts/CabinetGrotesk-Variable.woff2"
@@ -119,18 +122,37 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin="anonymous"
         />
+
+        {/* Favicon & icons */}
         <link rel="icon" href="/images/maranatha-logo.svg" type="image/svg+xml" />
         <link rel="alternate icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
+
+        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           suppressHydrationWarning
         />
       </head>
+
       <body className="antialiased">
+        {/* Main app content */}
         {children}
+
+        {/* Global Scripture Popup – shows random encouraging verses */}
+        <ScripturePopup />
+
+        {/* Toast notifications – using shadcn/ui sonner */}
+        <Toaster
+          richColors
+          closeButton
+          position="top-center"
+          duration={4000}
+          theme="light" // matches your light-only design
+          className="font-sans"
+        />
       </body>
     </html>
   );

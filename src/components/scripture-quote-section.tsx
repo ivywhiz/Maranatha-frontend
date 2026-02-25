@@ -55,15 +55,6 @@ export default function ScriptureQuoteSection() {
           </p>
           <footer className="text-white/90 text-lg">- Acts 26:23</footer>
         </blockquote>
-
-        <div className="pt-4">
-          <button
-            style={{ backgroundColor: "#E99E2E" }}
-            className="text-white px-6 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity shadow-md"
-          >
-            Explore More
-          </button>
-        </div>
       </div>
     </section>
   )
