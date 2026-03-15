@@ -3,6 +3,10 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Toaster } from "../components/ui/sonner";
 import ScripturePopup from "../components/scripture-popup";
+import { Inter } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -112,7 +116,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={cn("scroll-smooth", "font-sans", inter.variable)}>
       <head>
         {/* Preload important fonts */}
         <link
