@@ -51,7 +51,6 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    // Replace with real API call
     await new Promise((res) => setTimeout(res, 1200))
     setLoading(false)
     setSubmitted(true)
@@ -66,8 +65,16 @@ export default function ContactForm() {
         >
           <CheckCircle2 className="h-8 w-8" style={{ color: "#800080" }} />
         </div>
-        <h3 className="text-xl font-bold text-gray-900">Message Sent!</h3>
-        <p className="text-gray-500 text-sm max-w-xs leading-relaxed">
+        <h3 
+          className="text-xl font-bold text-gray-900"
+          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+        >
+          Message Sent!
+        </h3>
+        <p 
+          className="text-gray-500 text-sm max-w-xs leading-relaxed"
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
+        >
           Thank you for reaching out. We&apos;ll get back to you within 24 hours.
         </p>
         <button
@@ -75,8 +82,8 @@ export default function ContactForm() {
             setForm({ name: "", email: "", phone: "", subject: "", message: "" })
             setSubmitted(false)
           }}
-          className="mt-2 text-sm font-semibold underline underline-offset-4 transition-colors"
-          style={{ color: "#800080" }}
+          className="mt-2 text-sm font-semibold underline underline-offset-4 transition-colors hover:text-[#41076A]"
+          style={{ color: "#800080", fontFamily: "'DM Sans', sans-serif" }}
         >
           Send another message
         </button>
@@ -87,8 +94,16 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Send Us a Message</h2>
-        <p className="mt-1.5 text-sm text-gray-500">
+        <h2 
+          className="text-2xl font-bold text-gray-900"
+          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+        >
+          Send Us a Message
+        </h2>
+        <p 
+          className="mt-1.5 text-sm text-gray-500"
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
+        >
           Fill in the form below and we&apos;ll be in touch.
         </p>
       </div>
@@ -96,7 +111,12 @@ export default function ContactForm() {
       {/* Name + Email */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label htmlFor="name">Full Name</Label>
+          <Label 
+            htmlFor="name"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            Full Name
+          </Label>
           <Input
             id="name"
             name="name"
@@ -105,11 +125,17 @@ export default function ContactForm() {
             value={form.name}
             onChange={handleChange}
             required
+            className="focus:ring-[#800080]/30 focus:border-[#800080]/30"
           />
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="email">Email Address</Label>
+          <Label 
+            htmlFor="email"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            Email Address
+          </Label>
           <Input
             id="email"
             name="email"
@@ -118,6 +144,7 @@ export default function ContactForm() {
             value={form.email}
             onChange={handleChange}
             required
+            className="focus:ring-[#800080]/30 focus:border-[#800080]/30"
           />
         </div>
       </div>
@@ -125,7 +152,12 @@ export default function ContactForm() {
       {/* Phone + Subject */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label htmlFor="phone">Phone Number</Label>
+          <Label 
+            htmlFor="phone"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            Phone Number
+          </Label>
           <Input
             id="phone"
             name="phone"
@@ -133,11 +165,17 @@ export default function ContactForm() {
             placeholder="+1 (555) 000-0000"
             value={form.phone}
             onChange={handleChange}
+            className="focus:ring-[#800080]/30 focus:border-[#800080]/30"
           />
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="subject">Subject</Label>
+          <Label 
+            htmlFor="subject"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            Subject
+          </Label>
           <Select
             value={form.subject}
             onValueChange={(v: string) =>
@@ -145,7 +183,10 @@ export default function ContactForm() {
             }
             required
           >
-            <SelectTrigger id="subject">
+            <SelectTrigger 
+              id="subject"
+              className="focus:ring-[#800080]/30 focus:border-[#800080]/30"
+            >
               <SelectValue placeholder="Select a subject" />
             </SelectTrigger>
             <SelectContent>
@@ -161,7 +202,12 @@ export default function ContactForm() {
 
       {/* Message */}
       <div className="space-y-2">
-        <Label htmlFor="message">Message</Label>
+        <Label 
+          htmlFor="message"
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
+        >
+          Message
+        </Label>
         <Textarea
           id="message"
           name="message"
@@ -170,7 +216,7 @@ export default function ContactForm() {
           onChange={handleChange}
           required
           rows={6}
-          className="resize-none"
+          className="resize-none focus:ring-[#800080]/30 focus:border-[#800080]/30"
         />
       </div>
 
@@ -178,8 +224,11 @@ export default function ContactForm() {
       <Button
         type="submit"
         disabled={loading}
-        className="w-full py-6 text-base font-semibold rounded-2xl gap-2.5 hover:opacity-90 hover:scale-[1.01] transition-all duration-200"
-        style={{ backgroundColor: "#800080" }}
+        className="group w-full py-6 text-base font-semibold rounded-2xl gap-2.5 transition-all duration-300 hover:scale-[1.02] disabled:opacity-50"
+        style={{ 
+          background: "linear-gradient(135deg, #800080 0%, #41076A 100%)",
+          fontFamily: "'DM Sans', sans-serif"
+        }}
       >
         {loading ? (
           <>
@@ -206,7 +255,7 @@ export default function ContactForm() {
           </>
         ) : (
           <>
-            <Send className="h-4 w-4" />
+            <Send className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
             Send Message
           </>
         )}

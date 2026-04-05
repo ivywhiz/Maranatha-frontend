@@ -1,7 +1,7 @@
 // app/resources/[id]/page.tsx
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 import Header from "../../../components/header"
 import Footer from "../../../components/footer"
 import { RESOURCES } from "../../../components/resources/resource-data"
@@ -13,7 +13,6 @@ interface Props {
 export default function ResourceDetailPage({ params }: Props) {
   const resource = RESOURCES.find((r) => r.id === Number(params.id)) ?? RESOURCES[0]
 
-  // Split sections to inject inline image before "Conclusion"
   const conclusionIndex = resource.sections.findIndex(
     (s) => s.heading.toLowerCase() === "conclusion"
   )
@@ -29,6 +28,7 @@ export default function ResourceDetailPage({ params }: Props) {
           <Link
             href="/resources"
             className="inline-flex items-center gap-2 bg-white text-gray-600 text-sm font-semibold px-4 py-2 rounded-full hover:bg-gray-50 transition-colors shadow-sm border border-gray-100 mb-8"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
           >
             <ArrowLeft className="h-4 w-4" />
             Go back
@@ -36,10 +36,16 @@ export default function ResourceDetailPage({ params }: Props) {
 
           {/* Title + date — centered */}
           <div className="text-center max-w-2xl mx-auto space-y-3">
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
+            <h1 
+              className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            >
               {resource.title}
             </h1>
-            <p className="text-gray-400 text-sm">
+            <p 
+              className="text-gray-400 text-sm"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
               Published {resource.publishedDate}
             </p>
           </div>
@@ -71,16 +77,25 @@ export default function ResourceDetailPage({ params }: Props) {
                 className="object-cover"
               />
             </div>
-            <span className="text-sm font-semibold text-gray-800">{resource.author}</span>
+            <span 
+              className="text-sm font-semibold text-gray-800"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
+              {resource.author}
+            </span>
           </div>
-          <span className="text-sm text-gray-400">{resource.readTime}</span>
+          <span 
+            className="text-sm text-gray-400"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            {resource.readTime}
+          </span>
         </div>
 
         {/* Sections */}
         <div className="mt-8 space-y-8">
           {resource.sections.map((section, i) => (
             <div key={i}>
-              {/* Inject inline image before Conclusion */}
               {i === conclusionIndex && resource.inlineImage && (
                 <div className="relative w-full rounded-2xl overflow-hidden aspect-[5/3] mb-8">
                   <Image
@@ -92,18 +107,28 @@ export default function ResourceDetailPage({ params }: Props) {
                 </div>
               )}
 
-              <h2 className="text-xl font-bold text-gray-900 mb-3">{section.heading}</h2>
+              <h2 
+                className="text-xl font-bold text-gray-900 mb-3"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              >
+                {section.heading}
+              </h2>
 
               {section.body && (
-                <p className="text-gray-600 text-sm leading-relaxed">{section.body}</p>
+                <p 
+                  className="text-gray-600 text-sm leading-relaxed"
+                  style={{ fontFamily: "'DM Sans', sans-serif" }}
+                >
+                  {section.body}
+                </p>
               )}
 
               {section.bullets && (
                 <ul className="space-y-3 mt-3">
                   {section.bullets.map((bullet, bi) => (
                     <li key={bi} className="flex items-start gap-2 text-sm text-gray-600 leading-relaxed">
-                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gray-400 shrink-0" />
-                      {bullet}
+                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#800080] shrink-0" />
+                      <span style={{ fontFamily: "'DM Sans', sans-serif" }}>{bullet}</span>
                     </li>
                   ))}
                 </ul>

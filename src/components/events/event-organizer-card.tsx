@@ -12,12 +12,17 @@ export default function EventOrganizerCard({ event }: EventOrganizerCardProps) {
   return (
     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
       <div className="px-5 py-3 border-b border-gray-100">
-        <span className="text-sm text-gray-500">Event Organizer</span>
+        <span 
+          className="text-sm text-gray-500"
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
+        >
+          Event Organizer
+        </span>
       </div>
       <div className="p-5 space-y-4">
         {/* Organizer info */}
         <div className="flex items-center gap-3">
-          <div className="relative h-11 w-11 rounded-full overflow-hidden shrink-0 ring-2 ring-violet-100">
+          <div className="relative h-11 w-11 rounded-full overflow-hidden shrink-0 ring-2 ring-[#800080]/20">
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/maranatha%20logo-BBUxZMkkSIomnFx78tkAQmGRCpREmR.png"
               alt="Maranatha Moments Ministries"
@@ -25,7 +30,10 @@ export default function EventOrganizerCard({ event }: EventOrganizerCardProps) {
               className="object-cover"
             />
           </div>
-          <p className="text-sm font-bold text-gray-900 leading-snug">
+          <p 
+            className="text-sm font-bold text-gray-900 leading-snug"
+            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+          >
             Maranatha Moments Ministries
           </p>
         </div>

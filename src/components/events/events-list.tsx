@@ -9,7 +9,6 @@ const TABS = ["All Events", "Nearest Events", "Latest Events"]
 export default function EventsList() {
   const [activeTab, setActiveTab] = useState("All Events")
 
-  // For now all tabs show same data — swap in real filtering when API is ready
   const events = EVENTS
 
   return (
@@ -23,9 +22,9 @@ export default function EventsList() {
             className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 border ${
               activeTab === tab
                 ? "text-white border-transparent"
-                : "text-gray-600 border-gray-200 bg-white hover:border-gray-300"
+                : "text-gray-600 border-gray-200 bg-white hover:border-[#E99E2E]/30 hover:text-[#E99E2E]"
             }`}
-            style={activeTab === tab ? { backgroundColor: "#41076A" } : {}}
+            style={activeTab === tab ? { backgroundColor: "#800080", fontFamily: "'DM Sans', sans-serif" } : { fontFamily: "'DM Sans', sans-serif" }}
           >
             {tab}
           </button>

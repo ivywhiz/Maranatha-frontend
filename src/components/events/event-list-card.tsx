@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { MapPin, Calendar } from "lucide-react"
+import { MapPin, Calendar, ArrowRight } from "lucide-react"
 import { EventItem } from "./event-data"
 
 interface EventListCardProps {
@@ -29,16 +29,24 @@ export default function EventListCard({ event }: EventListCardProps) {
           {/* Category pill */}
           <span
             className="inline-block px-3 py-1 rounded-full text-xs font-semibold"
-            style={{ backgroundColor: "#EDE9FE", color: "#7C3AED" }}
+            style={{ backgroundColor: "#EDE9FE", color: "#7C3AED", fontFamily: "'DM Sans', sans-serif" }}
           >
             {event.category}
           </span>
 
           {/* Title */}
-          <h3 className="text-lg font-bold text-gray-900">{event.title}</h3>
+          <h3 
+            className="text-lg font-bold text-gray-900"
+            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+          >
+            {event.title}
+          </h3>
 
           {/* Description */}
-          <p className="text-sm text-gray-500 leading-relaxed line-clamp-3">
+          <p 
+            className="text-sm text-gray-500 leading-relaxed line-clamp-3"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
             {event.description}
           </p>
         </div>
@@ -48,7 +56,7 @@ export default function EventListCard({ event }: EventListCardProps) {
           <div className="flex items-center gap-1.5 text-gray-500">
             <MapPin className="h-3.5 w-3.5 text-gray-400 shrink-0" />
             <span className="font-semibold text-gray-700">Venue:</span>
-            <Link href="#" className="text-violet-600 hover:underline">
+            <Link href="#" className="text-[#800080] hover:underline">
               {event.venue}
             </Link>
           </div>
@@ -64,14 +72,16 @@ export default function EventListCard({ event }: EventListCardProps) {
       <div className="flex flex-row sm:flex-col items-center justify-between sm:justify-center gap-3 px-5 py-4 sm:px-6 sm:py-6 sm:border-l border-t sm:border-t-0 border-gray-100 shrink-0">
         <Link
           href={`/events/${event.id}`}
-          className="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-opacity hover:opacity-90"
-          style={{ backgroundColor: "#800080" }}
+          className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all hover:opacity-90 hover:scale-[1.02]"
+          style={{ backgroundColor: "#800080", fontFamily: "'DM Sans', sans-serif" }}
         >
           Schedule
+          <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
         </Link>
         <Link
           href={`/events/${event.id}`}
-          className="text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors"
+          className="text-sm font-medium text-gray-500 hover:text-[#800080] transition-colors"
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
           See details
         </Link>

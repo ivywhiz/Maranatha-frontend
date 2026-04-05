@@ -1,10 +1,11 @@
 // src/app/layout.tsx
 import type { Metadata, Viewport } from "next";
-import "./globals.css";
+import "../app/global.css";
 import { Toaster } from "../components/ui/sonner";
 import ScripturePopup from "../components/scripture-popup";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
+import QueryProvider from "../lib/providers/query-provider";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -142,21 +143,23 @@ export default function RootLayout({
       </head>
 
       <body className="antialiased">
-        {/* Main app content */}
-        {children}
+        <QueryProvider>
+          {/* Main app content */}
+          {children}
 
-        {/* Global Scripture Popup – shows random encouraging verses */}
-        <ScripturePopup />
+          {/* Global Scripture Popup – shows random encouraging verses */}
+          <ScripturePopup />
 
-        {/* Toast notifications – using shadcn/ui sonner */}
-        <Toaster
-          richColors
-          closeButton
-          position="top-center"
-          duration={4000}
-          theme="light" // matches your light-only design
-          className="font-sans"
-        />
+          {/* Toast notifications – using shadcn/ui sonner */}
+          <Toaster
+            richColors
+            closeButton
+            position="top-center"
+            duration={4000}
+            theme="light" // matches your light-only design
+            className="font-sans"
+          />
+        </QueryProvider>
       </body>
     </html>
   );

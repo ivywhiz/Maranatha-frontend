@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const images = [
   {
     src: "/images/share1.jpg",
     alt: "Community praying together",
-    shape: "rounded-3xl",        // top-left  — rectangle
+    shape: "rounded-3xl",        // top-left — rectangle
   },
   {
     src: "/images/share2.jpg",
@@ -47,7 +48,7 @@ export default function FaithGrowsSection() {
         aria-hidden
       />
 
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-24 lg:py-32">
+      <div className="relative max-w-[96rem] mx-auto px-6 sm:px-10 lg:px-16 py-24 lg:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
 
           {/* ── IMAGE GRID ── */}
@@ -63,7 +64,6 @@ export default function FaithGrowsSection() {
                   group
                 `}
                 style={{
-                  /* Staggered entrance via CSS animation */
                   animation: `fadeSlideUp 0.6s ease both`,
                   animationDelay: `${i * 100}ms`,
                 }}
@@ -82,38 +82,67 @@ export default function FaithGrowsSection() {
 
           {/* ── TEXT CONTENT ── */}
           <div className="space-y-7 flex flex-col justify-center lg:pl-4">
-            {/* Badge */}
-            <div>
-              <span className="inline-flex items-center px-5 py-1.5 text-sm font-medium rounded-full bg-white/80 text-violet-700 tracking-wide shadow-sm ring-1 ring-violet-200/60 backdrop-blur-sm">
+            {/* Eyebrow label - updated to match about hero */}
+            <div className="flex items-center gap-3">
+              <div className="h-px w-12 bg-[#E99E2E]" />
+              <span
+                className="text-[#E99E2E] text-xs font-bold uppercase tracking-[0.3em]"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
+              >
                 Share &amp; Connect
               </span>
             </div>
 
-            {/* Heading */}
-            <h2 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-bold leading-[1.1] tracking-tight text-gray-950">
+            {/* Heading - updated typography with purple gradient */}
+            <h2
+              className="text-4xl sm:text-5xl lg:text-[3.25rem] font-bold leading-[1.08] tracking-tight"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#0D0617" }}
+            >
               Faith Grows When{" "}
-              <span className="text-violet-600">It&apos;s Shared.</span>
+              <span
+                className="italic"
+                style={{
+                  background: "linear-gradient(135deg, #800080 0%, #41076A 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                It&apos;s Shared.
+              </span>
             </h2>
 
-            {/* Divider accent */}
-            <div className="flex items-center gap-3">
-              <div className="h-0.5 w-10 rounded-full bg-amber-400" />
-              <div className="h-0.5 w-4 rounded-full bg-violet-300" />
+            {/* Decorative bar - updated */}
+            <div className="flex gap-1.5">
+              <div className="h-1 w-16 rounded-full bg-[#E99E2E]" />
+              <div className="h-1 w-6 rounded-full bg-[#800080]/30" />
+              <div className="h-1 w-3 rounded-full bg-gray-300" />
             </div>
 
-            {/* Body */}
-            <p className="text-gray-600 text-lg leading-relaxed max-w-md">
+            {/* Body - updated typography */}
+            <p
+              className="text-gray-600 text-lg leading-relaxed max-w-md"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
               Join believers across the world in sharing stories, testimonies,
               and prayers. Encourage one another and grow together through
               conversations rooted in grace.
             </p>
 
-            {/* CTA */}
+            {/* CTA - updated to match other sections */}
             <div className="pt-2">
-              <button className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-base font-semibold bg-amber-400 text-gray-900 hover:bg-amber-500 shadow-md hover:shadow-lg transition-all duration-200 group focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2">
+              <Link
+                href="/community"
+                className="group inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl font-bold text-sm tracking-wide transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-[#E99E2E]/20"
+                style={{
+                  background: "linear-gradient(135deg, #E99E2E 0%, #F7D76A 100%)",
+                  fontFamily: "'DM Sans', sans-serif",
+                  color: "#0D0617",
+                }}
+              >
                 Join the Conversation
-                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-              </button>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@
 "use client"
 
 import Image from "next/image"
+import { motion } from "framer-motion"
 import { Heart, Wheat, Gift } from "lucide-react"
 
 const cards = [
@@ -94,22 +95,37 @@ export default function ServicesSection() {
       <div className="relative z-10 max-w-[96rem] mx-auto px-6 sm:px-10 lg:px-16 py-20 lg:py-28">
 
         {/* ── Header row ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-end mb-20 lg:mb-28">
-
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-end mb-20 lg:mb-28"
+        >
           {/* Left — label + heading */}
           <div className="space-y-6">
-            <span className="inline-flex items-center px-5 py-1.5 rounded-full text-sm font-medium bg-white/15 text-white backdrop-blur-sm ring-1 ring-white/20">
-              About Us
-            </span>
+            <div className="flex items-center gap-3">
+              <div className="h-px w-12 bg-[#E99E2E]" />
+              <span
+                className="text-[#E99E2E] text-xs font-bold uppercase tracking-[0.3em]"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
+              >
+                About Us
+              </span>
+            </div>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold leading-[1.08] tracking-tight">
+            <h2
+              className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold leading-[1.08] tracking-tight"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            >
               A Home for Every <br className="hidden sm:block" />
               <span
-                className="relative inline-block"
+                className="relative inline-block italic"
                 style={{
-                  background: "linear-gradient(90deg, #fde68a, #f59e0b)",
+                  background: "linear-gradient(135deg, #E99E2E 0%, #F7D76A 45%, #E99E2E 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
                 }}
               >
                 Believer
@@ -125,7 +141,10 @@ export default function ServicesSection() {
 
           {/* Right — body + CTA */}
           <div className="space-y-8">
-            <p className="text-lg text-white/75 leading-relaxed">
+            <p
+              className="text-white/75 text-lg leading-relaxed"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
               Maranatha is more than an app — it's a community centered on the Word.
               We bring together teachings, sermons, and real-life testimonies that
               inspire hope and nurture spiritual growth.
@@ -133,7 +152,10 @@ export default function ServicesSection() {
 
             <button
               className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-base font-semibold text-gray-900 shadow-lg transition-all duration-200 hover:shadow-xl hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-purple-800"
-              style={{ backgroundColor: "#E99E2E" }}
+              style={{ 
+                backgroundColor: "#E99E2E",
+                fontFamily: "'DM Sans', sans-serif"
+              }}
             >
               Join the Community
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -141,9 +163,9 @@ export default function ServicesSection() {
               </svg>
             </button>
           </div>
-        </div>
+        </motion.div>
 
-        {/* ── Cards ── */}
+        {/* ── Cards (original overlapping layout) ── */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-6 lg:gap-10">
           {cards.map(({ image, alt, label, icon: Icon, iconClass, rotate, hoverRotate, bg, labelClass, z, mt }) => (
             <div
@@ -175,7 +197,12 @@ export default function ServicesSection() {
                 {/* Label */}
                 <div className="flex items-center justify-center gap-2.5 py-1">
                   <Icon size={22} className={iconClass} />
-                  <p className={`text-lg font-bold ${labelClass}`}>{label}</p>
+                  <p 
+                    className={`text-lg font-bold ${labelClass}`}
+                    style={{ fontFamily: "'DM Sans', sans-serif" }}
+                  >
+                    {label}
+                  </p>
                 </div>
               </div>
             </div>

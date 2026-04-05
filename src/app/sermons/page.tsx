@@ -25,7 +25,7 @@ export default function SermonsPage() {
             {/* LEFT — Hero + Grid */}
             <div className="space-y-8">
 
-              {/* Hero banner image */}
+              {/* Hero banner image - updated typography */}
               <div className="relative w-full h-56 sm:h-72 rounded-2xl overflow-hidden shadow-md">
                 <Image
                   src="/images/sermons-hero.png"
@@ -37,7 +37,10 @@ export default function SermonsPage() {
                 {/* Overlay + title */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div className="absolute bottom-5 left-6">
-                  <h1 className="text-white text-2xl sm:text-3xl font-bold leading-tight">
+                  <h1 
+                    className="text-white text-2xl sm:text-3xl font-bold leading-tight"
+                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                  >
                     Spirit filled Missions
                   </h1>
                 </div>

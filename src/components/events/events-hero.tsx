@@ -17,10 +17,25 @@ export default function EventsHero() {
 
       {/* Centered text */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="h-px w-12 bg-[#E99E2E]" />
+          <span
+            className="text-[#E99E2E] text-xs font-bold uppercase tracking-[0.3em]"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            Upcoming Gatherings
+          </span>
+        </div>
+        <h1 
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight"
+          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+        >
           What&apos;s Happening
         </h1>
-        <p className="mt-3 text-white/85 text-sm sm:text-base max-w-2xl leading-relaxed">
+        <p 
+          className="mt-3 text-white/85 text-sm sm:text-base max-w-2xl leading-relaxed"
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
+        >
           Gather with our community for moments of worship, learning, and connection.
           Explore upcoming gatherings designed to inspire, strengthen faith, and bring people together.
         </p>

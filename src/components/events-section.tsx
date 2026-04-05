@@ -1,7 +1,8 @@
 "use client"
 
-import { Calendar, Radio } from "lucide-react"
+import { Calendar, Radio, ArrowRight } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 const events = [
   {
@@ -63,29 +64,65 @@ export default function EventsSection() {
 
             {/* ── LEFT: Text content ── */}
             <div className="space-y-7 lg:pt-2 lg:sticky lg:top-24">
-              <span className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-violet-100 text-violet-700 text-sm font-medium tracking-wide">
-                <Radio className="h-3.5 w-3.5 animate-pulse" />
-                Live Streams
-              </span>
-
-              <h2 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-bold text-gray-950 leading-[1.1] tracking-tight">
-                Worship In{" "}
-                <span className="text-violet-600">Real Time</span>
-              </h2>
-
+              {/* Eyebrow label - updated to match about hero */}
               <div className="flex items-center gap-3">
-                <div className="h-0.5 w-10 rounded-full bg-amber-400" />
-                <div className="h-0.5 w-4 rounded-full bg-violet-300" />
+                <div className="h-px w-12 bg-[#E99E2E]" />
+                <span
+                  className="text-[#E99E2E] text-xs font-bold uppercase tracking-[0.3em]"
+                  style={{ fontFamily: "'DM Sans', sans-serif" }}
+                >
+                  Live Streams
+                </span>
               </div>
 
-              <p className="text-lg text-gray-600 leading-relaxed max-w-md">
+              {/* Heading - updated typography */}
+              <h2
+                className="text-4xl sm:text-5xl lg:text-[3.25rem] font-bold leading-[1.08] tracking-tight"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#0D0617" }}
+              >
+                Worship In{" "}
+                <span
+                  className="italic"
+                  style={{
+                    background: "linear-gradient(135deg, #800080 0%, #41076A 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  Real Time
+                </span>
+              </h2>
+
+              {/* Decorative bar - updated */}
+              <div className="flex gap-1.5">
+                <div className="h-1 w-16 rounded-full bg-[#E99E2E]" />
+                <div className="h-1 w-6 rounded-full bg-[#800080]/30" />
+                <div className="h-1 w-3 rounded-full bg-gray-300" />
+              </div>
+
+              {/* Description - updated typography */}
+              <p
+                className="text-lg leading-relaxed max-w-md"
+                style={{ fontFamily: "'DM Sans', sans-serif", color: "#4B5563" }}
+              >
                 Experience live teachings and worship sessions right where you are.
                 Be part of a living, breathing fellowship — together, in faith.
               </p>
 
-              <button className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-base font-semibold bg-amber-400 text-gray-900 hover:bg-amber-500 shadow-md hover:shadow-lg transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2">
+              {/* CTA - updated to match other sections */}
+              <Link
+                href="/events"
+                className="group inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl font-bold text-sm tracking-wide transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-[#E99E2E]/20"
+                style={{
+                  background: "linear-gradient(135deg, #E99E2E 0%, #F7D76A 100%)",
+                  fontFamily: "'DM Sans', sans-serif",
+                  color: "#0D0617",
+                }}
+              >
                 View Live Schedule
-              </button>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
 
             {/* ── RIGHT: Stacked event cards ── */}
@@ -117,7 +154,12 @@ export default function EventsSection() {
                       <Calendar className="h-4 w-4" />
                       {events[0].date}
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 leading-snug">{events[0].title}</h3>
+                    <h3 
+                      className="text-xl font-bold text-gray-900 leading-snug"
+                      style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    >
+                      {events[0].title}
+                    </h3>
                     <button className="inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold bg-violet-600 text-white hover:bg-violet-700 transition-colors duration-200">
                       <Radio className="h-3.5 w-3.5" />
                       Watch Live
@@ -132,7 +174,10 @@ export default function EventsSection() {
                       <Calendar className="h-4 w-4" />
                       {events[0].date}
                     </div>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
+                    <h3 
+                      className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug"
+                      style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    >
                       {events[0].title}
                     </h3>
                     <div className="flex items-center gap-2">
@@ -181,7 +226,12 @@ export default function EventsSection() {
                         <Calendar className="h-4 w-4" />
                         {events[1].date}
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 leading-snug">{events[1].title}</h3>
+                      <h3 
+                        className="text-xl font-bold text-gray-900 leading-snug"
+                        style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                      >
+                        {events[1].title}
+                      </h3>
                       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold bg-violet-50 text-violet-500">
                         Coming Soon
                       </div>
@@ -195,7 +245,10 @@ export default function EventsSection() {
                         <Calendar className="h-4 w-4" />
                         {events[1].date}
                       </div>
-                      <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
+                      <h3 
+                        className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug"
+                        style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                      >
                         {events[1].title}
                       </h3>
                       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold bg-violet-50 text-violet-500">

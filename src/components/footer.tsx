@@ -2,14 +2,15 @@
 
 import Image from "next/image"
 import { Mail, Facebook, Twitter, Instagram, Youtube, MapPin, Phone, ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 const navLinks = [
-  { label: "Home", href: "#" },
-  { label: "About Us", href: "#" },
-  { label: "Sermons", href: "#" },
-  { label: "Events", href: "#" },
-  { label: "Prayer Wall", href: "#" },
-  { label: "Resources", href: "#" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Sermons", href: "/sermons" },
+  { label: "Events", href: "/events" },
+  { label: "Prayer Wall", href: "/prayer-wall" },
+  { label: "Resources", href: "/resources" },
 ]
 
 const socials = [
@@ -45,7 +46,7 @@ export default function Footer() {
       <div
         className="h-1 w-full"
         style={{
-          background: "linear-gradient(to right, transparent, #c084fc, #f59e0b, #c084fc, transparent)",
+          background: "linear-gradient(to right, transparent, #E99E2E, #800080, #E99E2E, transparent)",
         }}
       />
 
@@ -65,15 +66,24 @@ export default function Footer() {
                 className="object-contain drop-shadow-lg"
               />
               <div>
-                <h2 className="text-lg font-bold leading-tight text-white">
+                <h2 
+                  className="text-lg font-bold leading-tight text-white"
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                >
                   Maranatha Moment
                 </h2>
-                <p className="text-xs text-white/50 tracking-widest uppercase">
+                <p 
+                  className="text-xs text-white/50 tracking-widest uppercase"
+                  style={{ fontFamily: "'DM Sans', sans-serif" }}
+                >
                   Ministries
                 </p>
               </div>
             </div>
-            <p className="text-sm text-white/60 leading-relaxed">
+            <p 
+              className="text-sm text-white/60 leading-relaxed"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
               Bringing the hope of Christ to every heart — through worship, community, and the living Word.
             </p>
 
@@ -94,61 +104,86 @@ export default function Footer() {
 
           {/* Col 2 — Quick Links */}
           <div className="space-y-5">
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-white/40">
+            <h3 
+              className="text-sm font-semibold uppercase tracking-widest text-white/40"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
               Quick Links
             </h3>
             <ul className="space-y-3">
               {navLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <a
+                  <Link
                     href={href}
                     className="group inline-flex items-center gap-2 text-sm text-white/65 hover:text-white transition-colors duration-200"
+                    style={{ fontFamily: "'DM Sans', sans-serif" }}
                   >
                     <ArrowRight className="h-3 w-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Col 3 — Contact */}
+          {/* Col 3 — Contact (Address and Phone hidden) */}
           <div className="space-y-5">
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-white/40">
+            <h3 
+              className="text-sm font-semibold uppercase tracking-widest text-white/40"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
               Contact
             </h3>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-sm text-white/65">
-                <MapPin className="h-4 w-4 mt-0.5 text-amber-400 shrink-0" />
+              {/* Address - hidden for now */}
+              {/* <li className="flex items-start gap-3 text-sm text-white/65">
+                <MapPin className="h-4 w-4 mt-0.5 text-[#E99E2E] shrink-0" />
                 <span>123 Grace Avenue, Lagos, Nigeria</span>
-              </li>
-              <li className="flex items-center gap-3 text-sm text-white/65">
-                <Phone className="h-4 w-4 text-amber-400 shrink-0" />
+              </li> */}
+              {/* Phone - hidden for now */}
+              {/* <li className="flex items-center gap-3 text-sm text-white/65">
+                <Phone className="h-4 w-4 text-[#E99E2E] shrink-0" />
                 <span>+234 800 000 0000</span>
-              </li>
+              </li> */}
               <li className="flex items-center gap-3 text-sm text-white/65">
-                <Mail className="h-4 w-4 text-amber-400 shrink-0" />
-                <span>hello@maranathamoment.org</span>
+                <Mail className="h-4 w-4 text-[#E99E2E] shrink-0" />
+                <span 
+                  style={{ fontFamily: "'DM Sans', sans-serif" }}
+                >
+                  info@maranathamm.org
+                </span>
               </li>
             </ul>
           </div>
 
           {/* Col 4 — Newsletter */}
           <div className="space-y-5">
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-white/40">
+            <h3 
+              className="text-sm font-semibold uppercase tracking-widest text-white/40"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
               Newsletter
             </h3>
-            <p className="text-sm text-white/60 leading-relaxed">
+            <p 
+              className="text-sm text-white/60 leading-relaxed"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
               Get weekly devotionals, event updates, and encouragement delivered to your inbox.
             </p>
             <div className="flex flex-col gap-3">
               <input
                 type="email"
                 placeholder="Your email address"
-                className="w-full px-5 py-3 rounded-full text-sm text-gray-900 bg-white/90 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-400/60"
+                className="w-full px-5 py-3 rounded-full text-sm text-gray-900 bg-white/90 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#E99E2E]/60"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
               />
               <button
-                className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-gray-900 bg-amber-400 hover:bg-amber-500 transition-colors duration-200 shadow-lg"
+                className="group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 hover:scale-[1.02] shadow-lg"
+                style={{
+                  background: "linear-gradient(135deg, #E99E2E 0%, #F7D76A 100%)",
+                  fontFamily: "'DM Sans', sans-serif",
+                  color: "#0D0617",
+                }}
               >
                 <Mail className="h-4 w-4" />
                 Subscribe
@@ -162,10 +197,12 @@ export default function Footer() {
 
         {/* ── Bottom bar ── */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-xs text-white/40">
-          <p>&copy; {new Date().getFullYear()} Maranatha Moment Ministries. All Rights Reserved.</p>
+          <p style={{ fontFamily: "'DM Sans', sans-serif" }}>
+            &copy; {new Date().getFullYear()} Maranatha Moment Ministries. All Rights Reserved.
+          </p>
           <div className="flex items-center gap-5">
-            <a href="#" className="hover:text-white/70 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white/70 transition-colors">Terms of Use</a>
+            <Link href="/privacy" className="hover:text-white/70 transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-white/70 transition-colors">Terms of Use</Link>
           </div>
         </div>
 
