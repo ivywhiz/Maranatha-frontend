@@ -7,10 +7,11 @@ import Footer from "../../../components/footer"
 import { RESOURCES } from "../../../components/resources/resource-data"
 
 interface Props {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
-export default function ResourceDetailPage({ params }: Props) {
+export default async function ResourceDetailPage(props: Props) {
+  const params = await props.params;
   const resource = RESOURCES.find((r) => r.id === Number(params.id)) ?? RESOURCES[0]
 
   const conclusionIndex = resource.sections.findIndex(

@@ -8,8 +8,9 @@ const API_BASE =
 
 export async function GET(
   _req: NextRequest,
-  { params }: { params: { bibleId: string; bookId: string } }
+  props: { params: Promise<{ bibleId: string; bookId: string }> }
 ) {
+  const params = await props.params;
   const { bibleId, bookId } = params
 
   if (!bibleId || !bookId) {

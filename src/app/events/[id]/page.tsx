@@ -9,10 +9,11 @@ import EventDonateSidebar from "../../../components/events/event-donate-sidebar"
 import { EVENTS } from "../../../components/events/event-data"
 
 interface Props {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
-export default function EventDetailPage({ params }: Props) {
+export default async function EventDetailPage(props: Props) {
+  const params = await props.params;
   const event = EVENTS.find((e) => e.id === Number(params.id)) ?? EVENTS[0]
 
   return (

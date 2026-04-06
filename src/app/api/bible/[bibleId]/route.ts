@@ -6,10 +6,8 @@ import { NextRequest, NextResponse } from 'next/server'
 const API_BASE =
   process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8080/api/v1'
 
-export async function GET(
-  _req: NextRequest,
-  { params }: { params: { bibleId: string } }
-) {
+export async function GET(_req: NextRequest, props: { params: Promise<{ bibleId: string }> }) {
+  const params = await props.params;
   const { bibleId } = params
 
   if (!bibleId) {
