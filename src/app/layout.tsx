@@ -4,7 +4,7 @@ import "../app/global.css";
 import { Toaster } from "../components/ui/sonner";
 import ScripturePopup from "../components/scripture-popup";
 import { Inter } from "next/font/google";
-import { cn } from "@/lib/utils";
+import { cn } from "../lib/utils";
 import QueryProvider from "../lib/providers/query-provider";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});

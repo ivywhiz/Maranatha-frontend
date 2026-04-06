@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client"
 
 import { Play, ArrowRight, Sparkles, BookOpen } from "lucide-react"
@@ -64,9 +65,102 @@ export default function HeroSection() {
     }
   }, [dayOfYear])
 
+  const VerseCard = () => (
+    <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 1.1, delay: 0.5 }}
+      className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.08] p-6 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.28)]"
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-[#E99E2E]/20 via-transparent to-[#800080]/20" />
+      <div className="absolute -top-10 -right-10 h-28 w-28 rounded-full bg-[#E99E2E]/20 blur-2xl" />
+      <div className="absolute -bottom-12 -left-8 h-32 w-32 rounded-full bg-[#800080]/20 blur-2xl" />
+
+      <div className="relative space-y-5">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[#E99E2E] to-[#F7D76A] text-[#2b0b35] shadow-lg">
+              <BookOpen className="h-5 w-5" />
+            </div>
+            <div className="flex flex-col">
+              <span
+                className="text-[10px] uppercase tracking-[0.32em] text-white/45 font-bold"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
+              >
+                Verse of the Day
+              </span>
+              <span
+                className="text-white/85 text-sm font-semibold"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
+              >
+                Daily Scripture Inspiration
+              </span>
+            </div>
+          </div>
+
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#F7D76A]">
+            <Sparkles className="h-3.5 w-3.5" />
+            Live
+          </div>
+        </div>
+
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+        {verseLoading ? (
+          <div className="space-y-3 animate-pulse">
+            <div className="h-4 w-28 rounded bg-white/10" />
+            <div className="h-4 w-full rounded bg-white/10" />
+            <div className="h-4 w-[92%] rounded bg-white/10" />
+            <div className="h-4 w-[80%] rounded bg-white/10" />
+            <div className="h-10 w-40 rounded-2xl bg-white/10 mt-4" />
+          </div>
+        ) : verseError ? (
+          <div className="rounded-2xl border border-red-400/20 bg-red-500/10 p-4">
+            <p
+              className="text-sm text-white/80 leading-relaxed"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
+              Unable to load the verse of the day right now.
+            </p>
+          </div>
+        ) : (
+          <>
+            <blockquote
+              className="text-white text-lg leading-relaxed font-medium"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            >
+              "{verseOfDay?.content}"
+            </blockquote>
+
+            <div className="flex items-center gap-2 pt-1">
+              <div className="h-px w-8 bg-[#E99E2E]" />
+              <p
+                className="text-[#F7D76A] text-sm font-bold uppercase tracking-[0.18em]"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
+              >
+                {verseOfDay?.reference}
+              </p>
+            </div>
+
+            <div className="pt-2">
+              <div className="inline-flex items-center rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
+                <p
+                  className="text-white/70 text-xs uppercase tracking-[0.22em] font-semibold"
+                  style={{ fontFamily: "'DM Sans', sans-serif" }}
+                >
+                  God&apos;s Word for Today
+                </p>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </motion.div>
+  )
+
   return (
     <section className="relative min-h-[85vh] md:min-h-screen overflow-hidden flex items-center">
-      {/* Background: Using your specified video */}
+      {/* Background */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
@@ -173,104 +267,20 @@ export default function HeroSection() {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </motion.div>
+
+            {/* Verse card — visible on mobile only, sits below CTAs */}
+            <div className="block lg:hidden pt-2">
+              <VerseCard />
+            </div>
           </div>
 
-          {/* Right: Verse of the day card */}
+          {/* Right: Verse card — desktop only */}
           <div className="hidden lg:block lg:col-span-4 self-end lg:self-auto lg:mt-32">
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.1, delay: 0.5 }}
-              className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.08] p-6 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.28)]"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#E99E2E]/20 via-transparent to-[#800080]/20" />
-              <div className="absolute -top-10 -right-10 h-28 w-28 rounded-full bg-[#E99E2E]/20 blur-2xl" />
-              <div className="absolute -bottom-12 -left-8 h-32 w-32 rounded-full bg-[#800080]/20 blur-2xl" />
-
-              <div className="relative space-y-5">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[#E99E2E] to-[#F7D76A] text-[#2b0b35] shadow-lg">
-                      <BookOpen className="h-5 w-5" />
-                    </div>
-                    <div className="flex flex-col">
-                      <span
-                        className="text-[10px] uppercase tracking-[0.32em] text-white/45 font-bold"
-                        style={{ fontFamily: "'DM Sans', sans-serif" }}
-                      >
-                        Verse of the Day
-                      </span>
-                      <span
-                        className="text-white/85 text-sm font-semibold"
-                        style={{ fontFamily: "'DM Sans', sans-serif" }}
-                      >
-                        Daily Scripture Inspiration
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#F7D76A]">
-                    <Sparkles className="h-3.5 w-3.5" />
-                    Live
-                  </div>
-                </div>
-
-                <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-                {verseLoading ? (
-                  <div className="space-y-3 animate-pulse">
-                    <div className="h-4 w-28 rounded bg-white/10" />
-                    <div className="h-4 w-full rounded bg-white/10" />
-                    <div className="h-4 w-[92%] rounded bg-white/10" />
-                    <div className="h-4 w-[80%] rounded bg-white/10" />
-                    <div className="h-10 w-40 rounded-2xl bg-white/10 mt-4" />
-                  </div>
-                ) : verseError ? (
-                  <div className="rounded-2xl border border-red-400/20 bg-red-500/10 p-4">
-                    <p
-                      className="text-sm text-white/80 leading-relaxed"
-                      style={{ fontFamily: "'DM Sans', sans-serif" }}
-                    >
-                      Unable to load the verse of the day right now.
-                    </p>
-                  </div>
-                ) : (
-                  <>
-                    <blockquote
-                      className="text-white text-lg leading-relaxed font-medium"
-                      style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                    >
-                      “{verseOfDay?.content}”
-                    </blockquote>
-
-                    <div className="flex items-center gap-2 pt-1">
-                      <div className="h-px w-8 bg-[#E99E2E]" />
-                      <p
-                        className="text-[#F7D76A] text-sm font-bold uppercase tracking-[0.18em]"
-                        style={{ fontFamily: "'DM Sans', sans-serif" }}
-                      >
-                        {verseOfDay?.reference}
-                      </p>
-                    </div>
-
-                    <div className="pt-2">
-                      <div className="inline-flex items-center rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
-                        <p
-                          className="text-white/70 text-xs uppercase tracking-[0.22em] font-semibold"
-                          style={{ fontFamily: "'DM Sans', sans-serif" }}
-                        >
-                          God&apos;s Word for Today
-                        </p>
-                      </div>
-                    </div>
-                  </>
-                )}
-              </div>
-            </motion.div>
+            <VerseCard />
           </div>
         </div>
 
-        {/* Floating sermon preview card - updated styling */}
+        {/* Floating sermon preview card */}
         <motion.div
           initial={{ opacity: 0, y: 70 }}
           animate={{ opacity: 1, y: 0 }}
@@ -323,7 +333,7 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator - kept as is */}
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
