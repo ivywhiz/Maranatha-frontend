@@ -47,8 +47,7 @@ export default function AboutHeroSection() {
       <div className="relative z-10 max-w-[96rem] mx-auto px-6 sm:px-10 lg:px-16 pt-32 lg:pt-40 pb-20">
 
         {/* Eyebrow label */}
-        <div className="flex items-center gap-3 mb-8">
-          <div className="h-px w-12 bg-[#E99E2E]" />
+        <div className="flex flex-col items-start gap-3 mb-8">
           <span
             className="text-[#E99E2E] text-xs font-bold uppercase tracking-[0.3em]"
             style={{ fontFamily: "'DM Sans', sans-serif" }}

@@ -7,8 +7,8 @@ const contactItems = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+234 800 000 0000",
-    href: "tel:+2348000000000",
+    value: "",
+    href: "tel:+2",
   },
   {
     icon: Mail,
@@ -19,7 +19,7 @@ const contactItems = [
   {
     icon: MapPin,
     label: "Address",
-    value: "123 Grace Avenue, Lagos, Nigeria",
+    value: "",
     href: "https://maps.google.com",
   },
 ]

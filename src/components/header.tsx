@@ -94,14 +94,14 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-3">
             <Link
               href="/donate"
-              className="group inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2 text-sm font-semibold text-white/80 transition-all duration-300 hover:border-white/30 hover:text-white hover:bg-white/5"
-              style={{ fontFamily: "'DM Sans', sans-serif" }}
+              className="group inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02] shadow-md"
+              style={{ background: "linear-gradient(135deg, #cc0000 0%, #ff3333 100%)", fontFamily: "'DM Sans', sans-serif" }}
             >
               <Heart className="h-3.5 w-3.5" />
               Donate
             </Link>
             <Link
-              href="/join"
+              href="/volunteer"
               className="group inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 hover:scale-[1.02] shadow-md"
               style={{
                 background: "linear-gradient(135deg, #E99E2E 0%, #F7D76A 100%)",
@@ -109,7 +109,7 @@ export default function Header() {
                 color: "#0D0617",
               }}
             >
-              Join Us
+              Volunteer
               <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>
@@ -156,14 +156,14 @@ export default function Header() {
                 <Link
                   href="/donate"
                   onClick={() => setIsOpen(false)}
-                  className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-4 py-3 text-sm font-semibold text-white/80 transition-all duration-300 hover:border-white/30 hover:text-white hover:bg-white/5"
-                  style={{ fontFamily: "'DM Sans', sans-serif" }}
+                  className="group inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02]"
+                  style={{ background: "linear-gradient(135deg, #cc0000 0%, #ff3333 100%)", fontFamily: "'DM Sans', sans-serif" }}
                 >
                   <Heart className="h-3.5 w-3.5" />
                   Donate
                 </Link>
                 <Link
-                  href="/join"
+                  href="/volunteer"
                   onClick={() => setIsOpen(false)}
                   className="group inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 hover:scale-[1.02]"
                   style={{
@@ -172,7 +172,7 @@ export default function Header() {
                     color: "#0D0617",
                   }}
                 >
-                  Join Us
+                  Volunteer
                   <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
               </div>

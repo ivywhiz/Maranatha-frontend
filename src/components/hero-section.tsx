@@ -1,3 +1,4 @@
+
 /* eslint-disable react/no-unescaped-entities */
 "use client"
 
@@ -5,6 +6,7 @@ import { Play, ArrowRight, Sparkles, BookOpen } from "lucide-react"
 import { motion } from "framer-motion"
 import { Button } from "../components/ui/button"
 import { useEffect, useMemo, useState } from "react"
+import QRCode from "react-qr-code"
 
 type VerseOfDay = {
   id?: string
@@ -45,6 +47,7 @@ export default function HeroSection() {
         if (!mounted) return
 
         const verse = data?.data ?? data
+
         setVerseOfDay({
           id: verse?.id,
           content: verse?.content,
@@ -82,6 +85,7 @@ export default function HeroSection() {
             <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[#E99E2E] to-[#F7D76A] text-[#2b0b35] shadow-lg">
               <BookOpen className="h-5 w-5" />
             </div>
+
             <div className="flex flex-col">
               <span
                 className="text-[10px] uppercase tracking-[0.32em] text-white/45 font-bold"
@@ -89,6 +93,7 @@ export default function HeroSection() {
               >
                 Verse of the Day
               </span>
+
               <span
                 className="text-white/85 text-sm font-semibold"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
@@ -112,7 +117,6 @@ export default function HeroSection() {
             <div className="h-4 w-full rounded bg-white/10" />
             <div className="h-4 w-[92%] rounded bg-white/10" />
             <div className="h-4 w-[80%] rounded bg-white/10" />
-            <div className="h-10 w-40 rounded-2xl bg-white/10 mt-4" />
           </div>
         ) : verseError ? (
           <div className="rounded-2xl border border-red-400/20 bg-red-500/10 p-4">
@@ -134,23 +138,13 @@ export default function HeroSection() {
 
             <div className="flex items-center gap-2 pt-1">
               <div className="h-px w-8 bg-[#E99E2E]" />
+
               <p
                 className="text-[#F7D76A] text-sm font-bold uppercase tracking-[0.18em]"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
                 {verseOfDay?.reference}
               </p>
-            </div>
-
-            <div className="pt-2">
-              <div className="inline-flex items-center rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
-                <p
-                  className="text-white/70 text-xs uppercase tracking-[0.22em] font-semibold"
-                  style={{ fontFamily: "'DM Sans', sans-serif" }}
-                >
-                  God&apos;s Word for Today
-                </p>
-              </div>
             </div>
           </>
         )}
@@ -171,10 +165,6 @@ export default function HeroSection() {
           className="absolute inset-0 w-full h-full object-cover opacity-80 scale-105 transition-all duration-1000"
         >
           <source src="/videos/67748-523386840_medium.mp4" type="video/mp4" />
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/hero-fallback-glow.jpg')" }}
-          />
         </video>
 
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/60" />
@@ -187,24 +177,29 @@ export default function HeroSection() {
           animate={{ scale: [1, 1.08, 1], opacity: [0.5, 0.85, 0.5] }}
           transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
         />
+
         <motion.div
           className="absolute -bottom-20 -right-20 md:bottom-0 md:right-0 w-[500px] md:w-[700px] h-[500px] md:h-[700px] rounded-full bg-pink-500/15 blur-3xl"
           animate={{ scale: [1, 1.12, 1], opacity: [0.45, 0.8, 0.45] }}
-          transition={{ duration: 28, repeat: Infinity, ease: "easeInOut", delay: 7 }}
+          transition={{
+            duration: 28,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 7,
+          }}
         />
       </div>
 
       <div className="relative z-20 max-w-[96rem] mx-auto px-6 sm:px-10 lg:px-16 py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          {/* Left: Headline + CTAs */}
+          {/* Left */}
           <div className="lg:col-span-8 space-y-8 md:space-y-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="flex items-center gap-3"
+              className="flex flex-col items-start gap-3"
             >
-              <div className="h-px w-12 bg-[#E99E2E]" />
               <span
                 className="text-[#E99E2E] text-xs font-bold uppercase tracking-[0.3em]"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
@@ -224,7 +219,8 @@ export default function HeroSection() {
               <span
                 className="italic"
                 style={{
-                  background: "linear-gradient(135deg, #E99E2E 0%, #F7D76A 45%, #E99E2E 100%)",
+                  background:
+                    "linear-gradient(135deg, #E99E2E 0%, #F7D76A 45%, #E99E2E 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -232,7 +228,9 @@ export default function HeroSection() {
               >
                 Maranatha
               </span>
+
               <br />
+
               <span className="text-white/85">Moment Ministries</span>
             </motion.h1>
 
@@ -243,8 +241,8 @@ export default function HeroSection() {
               className="max-w-2xl text-white/60 text-xl leading-relaxed"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              Spreading the compassion and love of Jesus Christ to a global audience —
-              one digital moment at a time.
+              Spreading the compassion and love of Jesus Christ to a global
+              audience.
             </motion.p>
 
             <motion.div
@@ -255,85 +253,144 @@ export default function HeroSection() {
             >
               <Button
                 size="lg"
-                className="group inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl text-white font-bold text-sm tracking-wide transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-[#800080]/40"
+                className="group inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl text-white font-bold text-sm tracking-wide transition-all duration-300 hover:scale-[1.03]"
                 style={{
-                  background: "linear-gradient(135deg, #800080 0%, #41076A 100%)",
+                  background:
+                    "linear-gradient(135deg, #800080 0%, #41076A 100%)",
                   fontFamily: "'DM Sans', sans-serif",
                 }}
-                onClick={() => document.getElementById("sermons")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() =>
+                  document
+                    .getElementById("sermons")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
               >
                 <Play className="w-4 h-4 fill-white text-white" />
                 Watch Featured Sermon
+
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </motion.div>
 
-            {/* Verse card — visible on mobile only, sits below CTAs */}
             <div className="block lg:hidden pt-2">
               <VerseCard />
             </div>
           </div>
 
-          {/* Right: Verse card — desktop only */}
+          {/* Right */}
           <div className="hidden lg:block lg:col-span-4 self-end lg:self-auto lg:mt-32">
             <VerseCard />
           </div>
         </div>
 
-        {/* Floating sermon preview card */}
+        {/* Bottom Cards */}
         <motion.div
           initial={{ opacity: 0, y: 70 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.7 }}
-          className="mt-12 md:mt-20 mx-auto max-w-md sm:max-w-lg lg:max-w-xl bg-black/50 backdrop-blur-2xl border border-white/10 rounded-2xl p-7 sm:p-9"
+          className="mt-12 md:mt-20 mx-auto max-w-4xl"
         >
-          <div className="flex items-center justify-between mb-5">
-            <div className="flex items-center gap-3">
-              <div className="h-px w-8 bg-[#E99E2E]" />
-              <span
-                className="text-[#E99E2E] text-xs font-bold uppercase tracking-[0.2em]"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+            {/* Sermon Card */}
+            <div className="md:col-span-2 bg-black/50 backdrop-blur-2xl border border-white/10 rounded-2xl p-7 sm:p-9">
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-3">
+                  <div className="h-px w-8 bg-[#E99E2E]" />
+
+                  <span
+                    className="text-[#E99E2E] text-xs font-bold uppercase tracking-[0.2em]"
+                    style={{ fontFamily: "'DM Sans', sans-serif" }}
+                  >
+                    NOV 23, 2025
+                  </span>
+                </div>
+
+                <span
+                  className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider bg-[#800080]/40 rounded-full text-white/80 border border-white/10"
+                  style={{ fontFamily: "'DM Sans', sans-serif" }}
+                >
+                  LIVE TEACHING
+                </span>
+              </div>
+
+              <h3
+                className="text-white text-2xl sm:text-3xl font-bold mb-3 tracking-tight"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              >
+                Where Art Thou?
+              </h3>
+
+              <p
+                className="text-white/70 text-base sm:text-lg mb-7 leading-relaxed"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
-                NOV 23, 2025
-              </span>
+                A powerful encounter with the presence of God
+              </p>
+
+              <Button
+                className="group w-full inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl text-white font-bold text-sm tracking-wide transition-all duration-300 hover:scale-[1.02]"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #800080 0%, #41076A 100%)",
+                  fontFamily: "'DM Sans', sans-serif",
+                }}
+              >
+                <Play className="w-4 h-4 fill-white text-white" />
+                Watch Full Sermon
+
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
             </div>
-            <span
-              className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider bg-[#800080]/40 rounded-full text-white/80 border border-white/10"
-              style={{ fontFamily: "'DM Sans', sans-serif" }}
+
+            {/* QR Code Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.08] p-6 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.28)] flex flex-col items-center justify-center min-h-[280px] sm:min-h-[320px] md:min-h-full"
             >
-              LIVE TEACHING
-            </span>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#E99E2E]/15 via-transparent to-[#800080]/15" />
+
+              <div className="absolute -top-8 -right-8 h-24 w-24 rounded-full bg-[#E99E2E]/20 blur-2xl" />
+
+              <div className="absolute -bottom-8 -left-8 h-24 w-24 rounded-full bg-[#800080]/20 blur-2xl" />
+
+              <div className="relative flex flex-col items-center gap-5">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-white p-4 rounded-2xl shadow-xl"
+                >
+                  <QRCode
+                    value="https://www.maranathamm.org/"
+                    size={170}
+                    bgColor="#ffffff"
+                    fgColor="#000000"
+                    level="H"
+                  />
+                </motion.div>
+
+                <div className="text-center">
+                  <p
+                    className="text-white font-bold text-sm tracking-wide mb-1"
+                    style={{ fontFamily: "'DM Sans', sans-serif" }}
+                  >
+                    Scan to Visit
+                  </p>
+
+                  <p
+                    className="text-white/60 text-xs uppercase tracking-[0.15em]"
+                    style={{ fontFamily: "'DM Sans', sans-serif" }}
+                  >
+                    Maranatha Ministries
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
-
-          <h3
-            className="text-white text-2xl sm:text-3xl font-bold mb-3 tracking-tight"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-          >
-            Where Art Thou?
-          </h3>
-          <p
-            className="text-white/70 text-base sm:text-lg mb-7 leading-relaxed"
-            style={{ fontFamily: "'DM Sans', sans-serif" }}
-          >
-            A powerful encounter with the presence of God
-          </p>
-
-          <Button
-            className="group w-full inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl text-white font-bold text-sm tracking-wide transition-all duration-300 hover:scale-[1.02]"
-            style={{
-              background: "linear-gradient(135deg, #800080 0%, #41076A 100%)",
-              fontFamily: "'DM Sans', sans-serif",
-            }}
-            onClick={() => document.getElementById("sermons")?.scrollIntoView({ behavior: "smooth" })}
-          >
-            <Play className="w-4 h-4 fill-white text-white" />
-            Watch Full Sermon
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -341,12 +398,18 @@ export default function HeroSection() {
         className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs text-white/70"
       >
         <span>Scroll to explore</span>
+
         <motion.div
           animate={{ y: [0, 12, 0] }}
-          transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+          transition={{
+            duration: 2.8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
           className="w-px h-12 bg-gradient-to-b from-transparent via-white/60 to-transparent"
         />
       </motion.div>
     </section>
   )
 }
+
